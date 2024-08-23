@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_inheritance.CSharp.Main
 {
-    public class Newspaper: Product
+    public  abstract class Product
     {
         public string title;
-        Boolean onLoan = false;
+        bool onLoan = false;
 
-        public Newspaper(string title) {
-            this.title = title;
-        }
+  
+        
 
-        public bool isOnLoan() {
+        public bool isOnLoan()
+        {
             return onLoan;
         }
-
-        public override string checkIn() {
-
+        public virtual string checkIn()
+        {
             if (!this.isOnLoan())
             {
-                return "newspapers are not available for loan";
+                return "item is not currently on loan";
             }
 
             this.onLoan = false;
 
-            return "newspapers are not available for loan";
+            return "item has been checked in";
         }
 
-        public override string checkOut() {
+        public virtual string checkOut()
+        {
             if (this.isOnLoan())
             {
                 return "item is currently on loan";
@@ -39,7 +39,7 @@ namespace tdd_oop_inheritance.CSharp.Main
 
             this.onLoan = true;
 
-            return "newspapers are not available for loan";
+            return "item has been checked out";
         }
     }
 }
